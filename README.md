@@ -35,7 +35,9 @@ const db = knex({
      ssl: true
  }
 });
-
+```
+#### Method 1 (Using `POSTGRES_URL`)
+```javascript
 const db = knex({
     client: 'pg',
     connection: {
@@ -45,6 +47,8 @@ const db = knex({
         database: process.env.POSTGRES_DATABASE
     }
 });
+```
 
-npm start
+### TO run the server use 
+`npm start`
 

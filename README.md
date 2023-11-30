@@ -21,6 +21,15 @@ Create a `.env` file in the root directory of the project and add the following 
 - `PORT` - The port number on which the server will run.
 - `API_KEY` - Your API key.
 
+- `POSTGRES_URL`
+ or individual PostgreSQL environment variables:
+
+- `POSTGRES_HOST` - PostgreSQL host.
+- `POSTGRES_USER` - PostgreSQL username.
+- `POSTGRES_PASSWORD` - PostgreSQL password.
+- `POSTGRES_DATABASE` - PostgreSQL database name.
+
+
 #### PostgreSQL Configuration
 
 Use either method to configure the PostgreSQL connection:

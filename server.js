@@ -14,10 +14,10 @@ const image = require('./controllers/image')
 const db = knex({
     client: 'pg',
     connection: {
-        host: '127.0.0.1',
+        host:  process.env.POSTGRES_HOST,
         user: process.env.POSTGRES_USER,
         password: process.env.POSTGRES_PASSWORD,
-        database: "'smart-brain'",
+        database: process.env.POSTGRES_DATABASE,
     },
 });
 
@@ -34,6 +34,6 @@ app.post("/register", (req,res) => register.handleRegister(req , res, db, bcrypt
 app.post("/image",(req,res) => image.handleImage(req,res,db))
 app.post("/imageurl",(req,res) => image.handleApiCall(req,res))
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log(`App is Running on ${process.env.PORT}`)
 })

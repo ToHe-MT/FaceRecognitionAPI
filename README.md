@@ -36,7 +36,7 @@ const db = knex({
  }
 });
 ```
-#### Method 1 (Using `POSTGRES_URL`)
+### Method 2 (Using Individual PostgreSQL Variables)
 ```javascript
 const db = knex({
     client: 'pg',
@@ -49,6 +49,7 @@ const db = knex({
 });
 ```
 
-### TO run the server use 
+### To run the server use 
+
 `npm start`
 

@@ -15,23 +15,28 @@ const db = knex({
     client: 'pg',
     connection: {
         connectionString: process.env.POSTGRES_URL,
-        ssl:true
+        ssl: true
 
     }
 });
 
 app.use(bodyParser.json())
-app.use(cors())
+app.use(cors({
+    origin: 'https://face-recognition-client.vercel.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Content-Type,Authorization',
+}));
 
 
-app.get("/", (req, res) => {res.send("Home")})
-app.get("/signin", (req,res) => res.send("CHECK"))
-app.get("/profile/:id", (req,res) => profile.handleProfileGet(req,res, db ))
 
-app.post("/signin", (req,res) => signin.handleSignin(req,res, db, bcrypt ))
-app.post("/register", (req,res) => register.handleRegister(req , res, db, bcrypt))
-app.post("/image",(req,res) => image.handleImage(req,res,db))
-app.post("/imageurl",(req,res) => image.handleApiCall(req,res))
+app.get("/", (req, res) => { res.send("Home") })
+app.get("/signin", (req, res) => res.send("CHECK"))
+app.get("/profile/:id", (req, res) => profile.handleProfileGet(req, res, db))
+
+app.post("/signin", (req, res) => signin.handleSignin(req, res, db, bcrypt))
+app.post("/register", (req, res) => register.handleRegister(req, res, db, bcrypt))
+app.post("/image", (req, res) => image.handleImage(req, res, db))
+app.post("/imageurl", (req, res) => image.handleApiCall(req, res))
 
 app.listen(process.env.PORT || 3000, () => {
     console.log(`App is Running on ${process.env.PORT}`)

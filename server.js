@@ -22,7 +22,7 @@ const db = knex({
 
 app.use(bodyParser.json())
 app.use(cors({
-    origin: 'https://face-recognition-client.vercel.app',
+    origin: process.env.CLIENT,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
 }));
